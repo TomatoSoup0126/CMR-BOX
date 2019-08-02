@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <form>
+  <!-- <form>
     <div class="form-group">
       <label for="inputName">品名</label>
       <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder="請輸入品名">
@@ -57,6 +57,94 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+ -->
+
+  <div class="container">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">品名</span>
+      </div>
+      <input type="text" class="form-control" id="itemName" placeholder="請輸入藥品/樣品名稱" aria-label="Itenname"
+        aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">日期</span>
+      </div>
+      <input type="date" class="form-control" id="itemDate" placeholder="請輸入存放日期" aria-label="itemDate"
+        aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">來源</span>
+      </div>
+      <input type="text" class="form-control" id="itemResourse" placeholder="請輸入來源/廠商名稱" aria-label="Username"
+        aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">價格</span>
+      </div>
+      <input type="text" class="form-control" id="itemPrice" placeholder="請輸入阿拉伯數字"
+        aria-label="Amount (to the nearest dollar)">
+      <div class="input-group-append">
+        <span class="input-group-text">.TWD</span>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">數量</span>
+      </div>
+      <input type="text" class="form-control" id="itemQuantity" placeholder="請輸入阿拉伯數字" aria-label="Username"
+        aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-preend">
+        <label class="input-group-text" for="inputGroupSelect02">存放區域</label>
+      </div>
+      <select class="custom-select" id="itemArea">
+        <option value="4°C冰箱">4°C冰箱</option>
+        <option value="-20°C冰箱">-20°C冰箱</option>
+        <option value="-80°C冰箱">-80°C冰箱</option>
+        <option value="藥品乾燥箱">藥品乾燥箱</option>
+        <option value="液態氮桶">液態氮桶</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">詳細位置</span>
+      </div>
+      <input type="text" class="form-control" id="itemDetail" placeholder="請輸入詳細位置資訊 如:BOX1, 第一層...等"
+        aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-preend">
+        <label class="input-group-text" for="inputGroupSelect02">填寫人</label>
+      </div>
+      <select class="custom-select" id="userName">
+        <option selected></option>
+        <option value="TomatoSoup">TomatoSoup</option>
+        <option value="Mu">Mu</option>
+        <option value="Eva">Eva</option>
+        <option value="pon">pon</option>
+        <option value="Amy">Amy</option>
+        <option value="PW">PW</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="sumitBtn">Submit</button>
+
+  </div>
+
+
+
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -16,11 +16,15 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore()
 
 function storedata() {
-  db.collection("movies").doc("新世紀福爾摩斯").set({
-    name: "新世紀福爾摩斯",
-    date: "2010",
-    desctiption: "本劇改編自阿瑟·柯南·道爾爵士家喻戶曉的推理小說，一位脾氣古怪的大偵探在現代倫敦的街頭悄悄巡行，四處搜尋線索。",
-    actors: ["班尼迪克·康柏拜區", "馬丁·費曼"]
+  db.collection(itemArea.value).doc(itemName.value).set({
+    name: itemName.value,
+    date: itemDate.value,
+    resourse: itemResourse.value,
+    price: itemPrice.value,
+    quantity: itemQuantity.value,
+    area: itemArea.value,
+    location: itemDetail.value,
+    user: userName.value
   });
 
 }
@@ -40,3 +44,55 @@ function getdata() {
     });
 }
 
+function getFreezer1List() {
+  db.collection("-20°C冰箱").get().then(function (querySnapshot) {
+    console.log(querySnapshot)
+    querySnapshot.forEach(function (doc) {
+      console.log(doc.id, " => ", doc.data());
+    });
+  });
+}
+
+
+
+const itemName = document.getElementById('itemName')
+const itemDate = document.getElementById('itemDate')
+const itemResourse = document.getElementById('itemResourse')
+const itemPrice = document.getElementById('itemPrice')
+const itemQuantity = document.getElementById('itemQuantity')
+const itemArea = document.getElementById('itemArea')
+const itemDetail = document.getElementById('itemDetail')
+const userName = document.getElementById('userName')
+const sumitBtn = document.getElementById('sumitBtn')
+
+const inputArray = [itemName, itemDate, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
+
+
+sumitBtn.addEventListener('click', function () {
+  if (inputCheck()) {
+    alert('欄位有空白!')
+  } else {
+    for (let i = 0; i < inputArray.length; i++) {
+      print(inputArray[i].value)
+    }
+    storedata()
+    for (let i = 0; i < inputArray.length; i++) {
+      clearField(inputArray[i])
+    }
+  }
+})
+
+function print(text) {
+  console.log(text)
+}
+
+function clearField(input) {
+  input.value = ""
+}
+
+function inputCheck() {
+  let inputValueArray = [itemName.value, itemDate.value, itemResourse.value, itemPrice.value, itemQuantity.value, itemArea.value, itemDetail.value, userName.value]
+  console.log(inputValueArray)
+  console.log(inputValueArray.includes(''))
+  return inputValueArray.includes('')
+}
