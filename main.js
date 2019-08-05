@@ -25,7 +25,9 @@ function storedata() {
     area: itemArea.value,
     location: itemDetail.value,
     user: userName.value
-  });
+  })
+
+  alert(`已寫入${itemName.value}`)
 
 }
 
