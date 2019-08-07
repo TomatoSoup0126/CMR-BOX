@@ -11,6 +11,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+var db = firebase.firestore()
 //上述為google firebase提供
 const itemName = document.getElementById('itemName')
 const itemDate = document.getElementById('itemDate')
