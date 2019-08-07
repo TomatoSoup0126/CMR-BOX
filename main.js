@@ -11,7 +11,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var db = firebase.firestore()
 //上述為google firebase提供
 const itemName = document.getElementById('itemName')
 const itemDate = document.getElementById('itemDate')
@@ -23,11 +22,18 @@ const itemDetail = document.getElementById('itemDetail')
 const userName = document.getElementById('userName')
 const sumitBtn = document.getElementById('sumitBtn')
 
-
 const inputArray = [itemName, itemDate, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
 
 
+const freezer1 = [] //4度冰箱
+const freezer2 = [] //-20冰箱
+const freezer3 = [] //-80冰箱
 
+var db = firebase.firestore()
+
+getDocToArray('4°C冰箱', freezer1)
+getDocToArray('-20°C冰箱', freezer2)
+getDocToArray('-80°C冰箱', freezer3)
 
 
 sumitBtn.addEventListener('click', function () {
@@ -41,8 +47,6 @@ sumitBtn.addEventListener('click', function () {
     }
   }
 })
-
-
 
 function storedata() {
   db.collection(itemArea.value).doc(itemName.value).set({
@@ -75,7 +79,14 @@ function getdata() {
     });
 }
 
-
+function getDocToArray(collectionName, arrayName) {
+  db.collection(collectionName).get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      // console.log(doc.id, " => ", doc.data())
+      arrayName.push(doc.data())
+    });
+  });
+}
 
 
 function print(text) {
@@ -90,4 +101,3 @@ function inputCheck() {
   let inputValueArray = [itemName.value, itemDate.value, itemResourse.value, itemPrice.value, itemQuantity.value, itemArea.value, itemDetail.value, userName.value]
   return inputValueArray.includes('')
 }
-

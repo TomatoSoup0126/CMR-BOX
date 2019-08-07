@@ -11,6 +11,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+var db = firebase.firestore()
 //上述為google firebase提供
 
 
@@ -19,7 +20,7 @@ const freezer1 = [] //4度冰箱
 const freezer2 = [] //-20冰箱
 const freezer3 = [] //-80冰箱
 
-var db = firebase.firestore()
+
 
 getDocToArray('4°C冰箱', freezer1)
 getDocToArray('-20°C冰箱', freezer2)
