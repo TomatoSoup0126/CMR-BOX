@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+  <link href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -41,8 +41,23 @@
       </div>
 
       <div class="col-md-10">
-        <div class="row" id="data-Panel">
-          <!-- data panel -->
+        <table id="table" data-height="400" data-sort-stable="true">
+          <thead>
+            <tr>
+              <th data-field="name" data-sortable="true">名稱</th>
+              <th data-field="date" data-sortable="true">日期</th>
+              <th data-field="resourse" data-sortable="true">來源</th>
+              <th data-field="price" data-sortable="true">價格</th>
+              <th data-field="quantity" data-sortable="true">數量</th>
+              <th data-field="location" data-sortable="true">位置</th>
+              <th data-field="user" data-sortable="true">登記人</th>
+            </tr>
+          </thead>
+        </table>
+
+
+        <!-- <div class="row" id="data-Panel">
+      
           <table class="table table-hover">
             <thead>
               <tr>
@@ -73,7 +88,7 @@
             </tbody>
           </table>
 
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -98,6 +113,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
   <script src="show.js"></script>
 </body>
 
