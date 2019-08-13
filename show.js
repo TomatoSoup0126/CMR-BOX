@@ -16,13 +16,22 @@ var db = firebase.firestore()
 
 
 const listPanel = document.getElementById('area-lists')
-const dataPanel = document.getElementById('data - Panel')
+const dataPanel = document.getElementById('data-panel')
+
 
 const freezer1 = [] //4度冰箱
 const freezer2 = [] //-20冰箱
 const freezer3 = [] //-80冰箱
 const dryingBox = [] //乾燥箱
 const liquidNitrogen = [] //液態氮桶
+
+let areaDirectory = {
+
+
+}
+
+var $table = $('#table')
+
 
 let freezer4 = [{
   area: "-80°C冰箱",
@@ -42,7 +51,12 @@ getDocToArray('藥品乾燥箱', dryingBox)
 getDocToArray('液態氮桶', liquidNitrogen)
 
 
-var $table = $('#table')
+$(function () {
+  console.log('延遲一秒')
+  setTimeout('creatSortingTable(freezer1)', 1000); //延遲1秒
+})
+
+
 
 function creatSortingTable(data) {
   $(function () {
@@ -53,17 +67,38 @@ function creatSortingTable(data) {
 }
 
 
-
-
-//監聽list, 更動active項目, 取得類型ID, 傳入filterByGenres
+//監聽list, 更動active項目, 取得類型ID, 傳入creatSortingTable
 listPanel.addEventListener('click', (event) => {
   if (event.target.classList.contains('list-group-item')) {
     areaActive(event)
     let areaId = event.target.dataset['areaid']
-    console.log(areaId)
+    clearTableContent()
+
+    switch (areaId) {
+      case areaId = 'freezer1':
+        console.log('freezer1!')
+        creatSortingTable(freezer1)
+        break;
+      case areaId = 'freezer2':
+        creatSortingTable(freezer2)
+        break;
+      case areaId = 'freezer3':
+        creatSortingTable(freezer3)
+        break;
+      case areaId = 'dryingBox':
+        creatSortingTable(dryingBox)
+        break;
+      case areaId = 'liquidNitrogen':
+        creatSortingTable(liquidNitrogen)
+        break;
+
+      default:
+        break;
+    }
 
   }
 })
+
 
 //實現左側清單加上消除active的class
 function areaActive(event) {
@@ -83,4 +118,24 @@ function getDocToArray(collectionName, arrayName) {
       arrayName.push(doc.data())
     });
   });
+}
+
+function clearTableContent() {
+  let tableContent = `
+ <table id="table" data-height="100%" data-sort-stable="true">
+          <thead>
+            <tr>
+              <th data-field="name" data-sortable="true">名稱</th>
+              <th data-field="date" data-sortable="true">日期</th>
+              <th data-field="resourse" data-sortable="true">來源</th>
+              <th data-field="price" data-sortable="true">價格</th>
+              <th data-field="quantity" data-sortable="true">數量</th>
+              <th data-field="location" data-sortable="true">位置</th>
+              <th data-field="user" data-sortable="true">登記人</th>
+            </tr>
+          </thead>
+        </table>
+`
+
+  dataPanel.innerHTML = tableContent
 }

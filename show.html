@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="show.css">
 </head>
 
 <body>
@@ -22,7 +23,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Show All ITEM</a>
+          <a class="nav-link" href="index.html">Add Item</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="show.html">Show Item</a>
         </li>
       </ul>
     </div>
@@ -33,15 +38,16 @@
     <div class="row">
       <div class="col-md-2">
         <div class="list-group" id="area-lists">
-          <a href="#" class="list-group-item list-group-item-action" data-areaId="1">4°C冰箱</a>
-          <a href="#" class="list-group-item list-group-item-action" data-areaId="2">-20°C冰箱</a>
-          <a href="#" class="list-group-item list-group-item-action" data-areaId="3">-80°C冰箱</a>
-
+          <a href="#" class="list-group-item list-group-item-action active" data-areaId="freezer1">4°C冰箱</a>
+          <a href="#" class="list-group-item list-group-item-action" data-areaId="freezer2">-20°C冰箱</a>
+          <a href="#" class="list-group-item list-group-item-action" data-areaId="freezer3">-80°C冰箱</a>
+          <a href="#" class="list-group-item list-group-item-action" data-areaId="dryingBox">藥品乾燥箱</a>
+          <a href="#" class="list-group-item list-group-item-action" data-areaId="liquidNitrogen">液態氮桶</a>
         </div>
       </div>
 
-      <div class="col-md-10">
-        <table id="table" data-height="400" data-sort-stable="true">
+      <div class="col-md-10" id="data-panel">
+        <table id="table" data-height="100%" data-sort-stable="true">
           <thead>
             <tr>
               <th data-field="name" data-sortable="true">名稱</th>
@@ -54,41 +60,6 @@
             </tr>
           </thead>
         </table>
-
-
-        <!-- <div class="row" id="data-Panel">
-      
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div> -->
 
       </div>
     </div>
