@@ -17,7 +17,9 @@ var db = firebase.firestore()
 
 const listPanel = document.getElementById('area-lists')
 const dataPanel = document.getElementById('data-panel')
-
+const searchInput = document.getElementById('search-input')
+const searchButton = document.getElementById('search-Button')
+var $table = $('#table')
 
 const freezer1 = [] //4度冰箱
 const freezer2 = [] //-20冰箱
@@ -25,24 +27,7 @@ const freezer3 = [] //-80冰箱
 const dryingBox = [] //乾燥箱
 const liquidNitrogen = [] //液態氮桶
 
-let areaDirectory = {
 
-
-}
-
-var $table = $('#table')
-
-
-let freezer4 = [{
-  area: "-80°C冰箱",
-  date: "2019-08-08",
-  location: "BOX255",
-  name: "Eco72I",
-  price: "1520",
-  quantity: "2",
-  resourse: "Thermo",
-  user: "Eva",
-}]
 
 getDocToArray('4°C冰箱', freezer1)
 getDocToArray('-20°C冰箱', freezer2)
@@ -58,13 +43,18 @@ $(function () {
 
 
 
-function creatSortingTable(data) {
-  $(function () {
-    $('#table').bootstrapTable({
-      data: data
-    })
-  })
-}
+
+//監聽搜尋按鈕
+searchButton.addEventListener('click', (event) => {
+  let totalItem = freezer1.concat(freezer2, freezer3, dryingBox, liquidNitrogen) //合併所有項目供搜索
+  clearTableContent('search') //清空原有欄位轉為搜尋用欄位
+  let results = []
+
+  const regex = new RegExp(searchInput.value, 'i') //無視大小寫的正規表達式
+
+  results = totalItem.filter(totalItem => totalItem.name.match(regex)) //用filter寫入ture至result
+  creatSortingTable(results) //渲染內容
+})
 
 
 //監聽list, 更動active項目, 取得類型ID, 傳入creatSortingTable
@@ -120,22 +110,50 @@ function getDocToArray(collectionName, arrayName) {
   });
 }
 
-function clearTableContent() {
-  let tableContent = `
- <table id="table" data-height="100%" data-sort-stable="true">
-          <thead>
-            <tr>
-              <th data-field="name" data-sortable="true">名稱</th>
-              <th data-field="date" data-sortable="true">日期</th>
-              <th data-field="resourse" data-sortable="true">來源</th>
-              <th data-field="price" data-sortable="true">價格</th>
-              <th data-field="quantity" data-sortable="true">數量</th>
-              <th data-field="location" data-sortable="true">位置</th>
-              <th data-field="user" data-sortable="true">登記人</th>
-            </tr>
-          </thead>
-        </table>
-`
+function creatSortingTable(data) {
+  $(function () {
+    $('#table').bootstrapTable({
+      data: data
+    })
+  })
+}
 
-  dataPanel.innerHTML = tableContent
+function clearTableContent(mode) { //搜尋模式要多area欄位
+  if (mode === 'search') {
+    let tableContent = `
+  <table id="table" data-height="100%" data-sort-stable="true">
+    <thead>
+      <tr>
+        <th data-field="name" data-sortable="true">名稱</th>
+        <th data-field="date" data-sortable="true">日期</th>
+        <th data-field="resourse" data-sortable="true">來源</th>
+        <th data-field="price" data-sortable="true">價格</th>
+        <th data-field="quantity" data-sortable="true">數量</th>
+        <th data-field="area" data-sortable="true">區域</th>
+        <th data-field="location" data-sortable="true">位置</th>
+        <th data-field="user" data-sortable="true">登記人</th>
+      </tr>
+    </thead>
+  </table>
+`
+    dataPanel.innerHTML = tableContent
+  } else {
+    let tableContent = `
+  <table id="table" data-height="100%" data-sort-stable="true">
+    <thead>
+      <tr>
+        <th data-field="name" data-sortable="true">名稱</th>
+        <th data-field="date" data-sortable="true">日期</th>
+        <th data-field="resourse" data-sortable="true">來源</th>
+        <th data-field="price" data-sortable="true">價格</th>
+        <th data-field="quantity" data-sortable="true">數量</th>
+        <th data-field="location" data-sortable="true">位置</th>
+        <th data-field="user" data-sortable="true">登記人</th>
+      </tr>
+    </thead>
+  </table>
+`
+    dataPanel.innerHTML = tableContent
+  }
+
 }

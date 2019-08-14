@@ -46,20 +46,34 @@
         </div>
       </div>
 
-      <div class="col-md-10" id="data-panel">
-        <table id="table" data-height="100%" data-sort-stable="true">
-          <thead>
-            <tr>
-              <th data-field="name" data-sortable="true">名稱</th>
-              <th data-field="date" data-sortable="true">日期</th>
-              <th data-field="resourse" data-sortable="true">來源</th>
-              <th data-field="price" data-sortable="true">價格</th>
-              <th data-field="quantity" data-sortable="true">數量</th>
-              <th data-field="location" data-sortable="true">位置</th>
-              <th data-field="user" data-sortable="true">登記人</th>
-            </tr>
-          </thead>
-        </table>
+
+
+      <div class="col-md-10">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="type keyword..." aria-label=""
+            aria-describedby="button-addon2" id="search-input">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="search-Button">Search</button>
+          </div>
+        </div>
+
+        <div id="data-panel">
+          <table id="table" data-height="100%" data-sort-stable="true">
+            <thead>
+              <tr>
+                <th data-field="name" data-sortable="true">名稱</th>
+                <th data-field="date" data-sortable="true">日期</th>
+                <th data-field="resourse" data-sortable="true">來源</th>
+                <th data-field="price" data-sortable="true">價格</th>
+                <th data-field="quantity" data-sortable="true">數量</th>
+                <th data-field="location" data-sortable="true">位置</th>
+                <th data-field="user" data-sortable="true">登記人</th>
+              </tr>
+            </thead>
+          </table>
+
+        </div>
+
 
       </div>
     </div>

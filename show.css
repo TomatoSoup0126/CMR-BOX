@@ -5,3 +5,7 @@
 #area-lists{
   padding-bottom: 20px; 
 }
+
+.bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
+    border-bottom: 0px;
+}
