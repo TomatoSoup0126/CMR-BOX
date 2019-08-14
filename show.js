@@ -47,6 +47,7 @@ $(function () {
 //監聽搜尋按鈕
 searchButton.addEventListener('click', (event) => {
   let totalItem = freezer1.concat(freezer2, freezer3, dryingBox, liquidNitrogen) //合併所有項目供搜索
+
   clearTableContent('search') //清空原有欄位轉為搜尋用欄位
   let results = []
 
