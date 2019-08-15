@@ -122,7 +122,8 @@ function creatSortingTable(data) {
 function clearTableContent(mode) { //搜尋模式要多area欄位
   if (mode === 'search') {
     let tableContent = `
-  <table id="table" data-height="100%" data-sort-stable="true">
+           <table id="table" data-height="100%" data-sort-stable="true" data-show-columns="true" data-pagination="true"
+            data-side-pagination="client" data-filter-control="true">
     <thead>
       <tr>
         <th data-field="name" data-sortable="true">名稱</th>
@@ -140,7 +141,8 @@ function clearTableContent(mode) { //搜尋模式要多area欄位
     dataPanel.innerHTML = tableContent
   } else {
     let tableContent = `
-  <table id="table" data-height="100%" data-sort-stable="true">
+           <table id="table" data-height="100%" data-sort-stable="true" data-show-columns="true" data-pagination="true"
+            data-side-pagination="client" data-filter-control="true">
     <thead>
       <tr>
         <th data-field="name" data-sortable="true">名稱</th>

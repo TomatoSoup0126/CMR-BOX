@@ -101,3 +101,19 @@ function inputCheck() {
   let inputValueArray = [itemName.value, itemDate.value, itemResourse.value, itemPrice.value, itemQuantity.value, itemArea.value, itemDetail.value, userName.value]
   return inputValueArray.includes('')
 }
+
+function inputFakeData(num) {
+
+  db.collection('-20°C冰箱').doc(`測試名稱${num}`).set({
+    name: `測試名稱${num}`,
+    date: `2019-08-02`,
+    resourse: `測試來源${num}`,
+    price: `${num}`,
+    quantity: `${num}`,
+    area: '-20°C冰箱',
+    location: `測試位置${num}`,
+    user: `fakeSoup`
+  })
+
+}
+

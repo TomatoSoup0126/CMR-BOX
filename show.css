@@ -9,3 +9,8 @@
 .bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
     border-bottom: 0px;
 }
+
+.bootstrap-table .fixed-table-pagination>.pagination ul.pagination {
+    margin-top: 0;
+}
+
