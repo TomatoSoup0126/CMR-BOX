@@ -13,6 +13,7 @@ firebase.initializeApp(firebaseConfig);
 
 //上述為google firebase提供
 const itemName = document.getElementById('itemName')
+const itemNumber = document.getElementById('itemNumber')
 const itemDate = document.getElementById('itemDate')
 const itemResourse = document.getElementById('itemResourse')
 const itemPrice = document.getElementById('itemPrice')
@@ -22,7 +23,7 @@ const itemDetail = document.getElementById('itemDetail')
 const userName = document.getElementById('userName')
 const sumitBtn = document.getElementById('sumitBtn')
 
-const inputArray = [itemName, itemDate, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
+const inputArray = [itemName, itemNumber, itemDate, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
 
 
 const freezer1 = [] //4度冰箱
@@ -51,6 +52,7 @@ sumitBtn.addEventListener('click', function () {
 function storedata() {
   db.collection(itemArea.value).doc(itemName.value).set({
     name: itemName.value,
+    number: itemNumber.value,
     date: itemDate.value,
     resourse: itemResourse.value,
     price: itemPrice.value,

@@ -127,6 +127,7 @@ function clearTableContent(mode) { //搜尋模式要多area欄位
     <thead>
       <tr>
         <th data-field="name" data-sortable="true">名稱</th>
+        <th data-field="number" data-sortable="true">貨號</th>
         <th data-field="date" data-sortable="true">日期</th>
         <th data-field="resourse" data-sortable="true">來源</th>
         <th data-field="price" data-sortable="true">價格</th>
@@ -146,6 +147,7 @@ function clearTableContent(mode) { //搜尋模式要多area欄位
     <thead>
       <tr>
         <th data-field="name" data-sortable="true">名稱</th>
+        <th data-field="number" data-sortable="true">貨號</th>
         <th data-field="date" data-sortable="true">日期</th>
         <th data-field="resourse" data-sortable="true">來源</th>
         <th data-field="price" data-sortable="true">價格</th>
