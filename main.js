@@ -13,8 +13,6 @@ firebase.initializeApp(firebaseConfig);
 
 //上述為google firebase提供
 const itemName = document.getElementById('itemName')
-const itemNumber = document.getElementById('itemNumber')
-const itemDate = document.getElementById('itemDate')
 const itemResourse = document.getElementById('itemResourse')
 const itemPrice = document.getElementById('itemPrice')
 const itemQuantity = document.getElementById('itemQuantity')
@@ -23,7 +21,7 @@ const itemDetail = document.getElementById('itemDetail')
 const userName = document.getElementById('userName')
 const sumitBtn = document.getElementById('sumitBtn')
 
-const inputArray = [itemName, itemNumber, itemDate, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
+const inputArray = [itemName, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
 
 
 const freezer1 = [] //4度冰箱
@@ -50,10 +48,12 @@ sumitBtn.addEventListener('click', function () {
 })
 
 function storedata() {
-  db.collection(itemArea.value).doc(itemName.value).set({
+  let serialNumberInStore = getSerialNumber()
+
+  db.collection(itemArea.value).doc(itemName.value + '_' + serialNumberInStore).set({
     name: itemName.value,
-    number: itemNumber.value,
-    date: itemDate.value,
+    serialNumber: serialNumberInStore,
+    date: getTodayDate(),
     resourse: itemResourse.value,
     price: itemPrice.value,
     quantity: itemQuantity.value,
@@ -100,15 +100,17 @@ function clearField(input) {
 }
 
 function inputCheck() {
-  let inputValueArray = [itemName.value, itemDate.value, itemResourse.value, itemPrice.value, itemQuantity.value, itemArea.value, itemDetail.value, userName.value]
+  let inputValueArray = [itemName.value, itemResourse.value, itemPrice.value, itemQuantity.value, itemArea.value, itemDetail.value, userName.value]
   return inputValueArray.includes('')
 }
 
 function inputFakeData(num) {
+  let serialNumberInStore = getSerialNumber()
 
-  db.collection('-20°C冰箱').doc(`測試名稱${num}`).set({
+  db.collection('-20°C冰箱').doc(`測試名稱${num}` + '_' + serialNumberInStore).set({
     name: `測試名稱${num}`,
-    date: `2019-08-02`,
+    serialNumber: serialNumberInStore,
+    date: getTodayDate(),
     resourse: `測試來源${num}`,
     price: `${num}`,
     quantity: `${num}`,
@@ -117,5 +119,26 @@ function inputFakeData(num) {
     user: `fakeSoup`
   })
 
+}
+
+
+function getTodayDate() {
+  let fullDate = new Date()
+  let yyyy = fullDate.getFullYear()
+  let MM = (fullDate.getMonth() + 1) >= 10 ? (fullDate.getMonth() + 1) : ("0" + (fullDate.getMonth() + 1))
+  let dd = fullDate.getDate() < 10 ? ("0" + fullDate.getDate()) : fullDate.getDate()
+  let today = yyyy + "-" + MM + "-" + dd
+  return today
+}
+
+function getSerialNumber() {
+  let fullDate = new Date()
+  let yy = fullDate.getFullYear()
+  yy -= 2000
+  let MM = (fullDate.getMonth() + 1) >= 10 ? (fullDate.getMonth() + 1) : ("0" + (fullDate.getMonth() + 1))
+  let dd = fullDate.getDate() < 10 ? ("0" + fullDate.getDate()) : fullDate.getDate()
+  let ss = fullDate.getMilliseconds()
+  let serialNumber = yy + MM + dd + ss
+  return serialNumber
 }
 

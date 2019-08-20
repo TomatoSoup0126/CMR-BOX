@@ -26,6 +26,7 @@ const freezer2 = [] //-20冰箱
 const freezer3 = [] //-80冰箱
 const dryingBox = [] //乾燥箱
 const liquidNitrogen = [] //液態氮桶
+const medicalCupboard = [] //藥品櫃
 
 
 
@@ -34,6 +35,7 @@ getDocToArray('-20°C冰箱', freezer2)
 getDocToArray('-80°C冰箱', freezer3)
 getDocToArray('藥品乾燥箱', dryingBox)
 getDocToArray('液態氮桶', liquidNitrogen)
+getDocToArray('藥品櫃', medicalCupboard)
 
 
 $(function () {
@@ -46,7 +48,7 @@ $(function () {
 
 //監聽搜尋按鈕
 searchButton.addEventListener('click', (event) => {
-  let totalItem = freezer1.concat(freezer2, freezer3, dryingBox, liquidNitrogen) //合併所有項目供搜索
+  let totalItem = freezer1.concat(freezer2, freezer3, dryingBox, liquidNitrogen, medicalCupboard) //合併所有項目供搜索
 
   clearTableContent('search') //清空原有欄位轉為搜尋用欄位
   let results = []
@@ -82,6 +84,10 @@ listPanel.addEventListener('click', (event) => {
       case areaId = 'liquidNitrogen':
         creatSortingTable(liquidNitrogen)
         break;
+      case areaId = 'medicalCupboard':
+        creatSortingTable(medicalCupboard)
+        break;
+
 
       default:
         break;
@@ -127,7 +133,7 @@ function clearTableContent(mode) { //搜尋模式要多area欄位
     <thead>
       <tr>
         <th data-field="name" data-sortable="true">名稱</th>
-        <th data-field="number" data-sortable="true">貨號</th>
+        <th data-field="serialNumber" data-sortable="true">流水號</th>
         <th data-field="date" data-sortable="true">日期</th>
         <th data-field="resourse" data-sortable="true">來源</th>
         <th data-field="price" data-sortable="true">價格</th>
@@ -147,7 +153,7 @@ function clearTableContent(mode) { //搜尋模式要多area欄位
     <thead>
       <tr>
         <th data-field="name" data-sortable="true">名稱</th>
-        <th data-field="number" data-sortable="true">貨號</th>
+        <th data-field="serialNumber" data-sortable="true">流水號</th>
         <th data-field="date" data-sortable="true">日期</th>
         <th data-field="resourse" data-sortable="true">來源</th>
         <th data-field="price" data-sortable="true">價格</th>
