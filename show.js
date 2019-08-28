@@ -27,6 +27,7 @@ const freezer3 = [] //-80冰箱
 const dryingBox = [] //乾燥箱
 const liquidNitrogen = [] //液態氮桶
 const medicalCupboard = [] //藥品櫃
+const hood = [] //化學抽風櫃
 
 
 
@@ -36,6 +37,7 @@ getDocToArray('-80°C冰箱', freezer3)
 getDocToArray('藥品乾燥箱', dryingBox)
 getDocToArray('液態氮桶', liquidNitrogen)
 getDocToArray('藥品櫃', medicalCupboard)
+getDocToArray('化學抽風櫃', hood)
 
 
 $(function () {
@@ -86,6 +88,9 @@ listPanel.addEventListener('click', (event) => {
         break;
       case areaId = 'medicalCupboard':
         creatSortingTable(medicalCupboard)
+        break;
+      case areaId = 'hood':
+        creatSortingTable(hood)
         break;
 
 
