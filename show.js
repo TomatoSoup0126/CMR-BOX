@@ -28,6 +28,7 @@ const dryingBox = [] //乾燥箱
 const liquidNitrogen = [] //液態氮桶
 const medicalCupboard = [] //藥品櫃
 const hood = [] //化學抽風櫃
+const cellFreezer = [] //細胞房冰箱
 
 
 
@@ -38,6 +39,7 @@ getDocToArray('藥品乾燥箱', dryingBox)
 getDocToArray('液態氮桶', liquidNitrogen)
 getDocToArray('藥品櫃', medicalCupboard)
 getDocToArray('化學抽風櫃', hood)
+getDocToArray('細胞房冰箱', cellFreezer)
 
 
 $(function () {

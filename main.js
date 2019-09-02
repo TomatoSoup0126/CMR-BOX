@@ -24,15 +24,15 @@ const sumitBtn = document.getElementById('sumitBtn')
 const inputArray = [itemName, itemResourse, itemPrice, itemQuantity, itemArea, itemDetail, userName]
 
 
-const freezer1 = [] //4度冰箱
-const freezer2 = [] //-20冰箱
-const freezer3 = [] //-80冰箱
+// const freezer1 = [] //4度冰箱
+// const freezer2 = [] //-20冰箱
+// const freezer3 = [] //-80冰箱
 
 var db = firebase.firestore()
 
-getDocToArray('4°C冰箱', freezer1)
-getDocToArray('-20°C冰箱', freezer2)
-getDocToArray('-80°C冰箱', freezer3)
+// getDocToArray('4°C冰箱', freezer1)
+// getDocToArray('-20°C冰箱', freezer2)
+// getDocToArray('-80°C冰箱', freezer3)
 
 
 sumitBtn.addEventListener('click', function () {
@@ -66,20 +66,20 @@ function storedata() {
 
 }
 
-function getdata() {
-  var docRef = db.collection("movies").doc("新世紀福爾摩斯");
-  docRef.get().then(function (doc) {
-    if (doc.exists) {
-      console.log(doc)
-      console.log(doc.data());
-    } else {
-      console.log("找不到文件");
-    }
-  })
-    .catch(function (error) {
-      console.log("提取文件時出錯:", error);
-    });
-}
+// function getdata() {
+//   var docRef = db.collection("movies").doc("新世紀福爾摩斯");
+//   docRef.get().then(function (doc) {
+//     if (doc.exists) {
+//       console.log(doc)
+//       console.log(doc.data());
+//     } else {
+//       console.log("找不到文件");
+//     }
+//   })
+//     .catch(function (error) {
+//       console.log("提取文件時出錯:", error);
+//     });
+// }
 
 function getDocToArray(collectionName, arrayName) {
   db.collection(collectionName).get().then(function (querySnapshot) {
@@ -104,22 +104,22 @@ function inputCheck() {
   return inputValueArray.includes('')
 }
 
-function inputFakeData(num) {
-  let serialNumberInStore = getSerialNumber()
+// function inputFakeData(num) {
+//   let serialNumberInStore = getSerialNumber()
 
-  db.collection('-20°C冰箱').doc(`測試名稱${num}` + '_' + serialNumberInStore).set({
-    name: `測試名稱${num}`,
-    serialNumber: serialNumberInStore,
-    date: getTodayDate(),
-    resourse: `測試來源${num}`,
-    price: `${num}`,
-    quantity: `${num}`,
-    area: '-20°C冰箱',
-    location: `測試位置${num}`,
-    user: `fakeSoup`
-  })
+//   db.collection('-20°C冰箱').doc(`測試名稱${num}` + '_' + serialNumberInStore).set({
+//     name: `測試名稱${num}`,
+//     serialNumber: serialNumberInStore,
+//     date: getTodayDate(),
+//     resourse: `測試來源${num}`,
+//     price: `${num}`,
+//     quantity: `${num}`,
+//     area: '-20°C冰箱',
+//     location: `測試位置${num}`,
+//     user: `fakeSoup`
+//   })
 
-}
+// }
 
 
 function getTodayDate() {
