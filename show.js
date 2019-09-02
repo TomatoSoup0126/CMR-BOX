@@ -52,7 +52,7 @@ $(function () {
 
 //監聽搜尋按鈕
 searchButton.addEventListener('click', (event) => {
-  let totalItem = freezer1.concat(freezer2, freezer3, dryingBox, liquidNitrogen, medicalCupboard) //合併所有項目供搜索
+  let totalItem = freezer1.concat(freezer2, freezer3, cellFreezer, dryingBox, liquidNitrogen, medicalCupboard) //合併所有項目供搜索
 
   clearTableContent('search') //清空原有欄位轉為搜尋用欄位
   let results = []
@@ -73,7 +73,6 @@ listPanel.addEventListener('click', (event) => {
 
     switch (areaId) {
       case areaId = 'freezer1':
-        console.log('freezer1!')
         creatSortingTable(freezer1)
         break;
       case areaId = 'freezer2':
@@ -81,6 +80,9 @@ listPanel.addEventListener('click', (event) => {
         break;
       case areaId = 'freezer3':
         creatSortingTable(freezer3)
+        break;
+      case areaId = 'cellFreezer':
+        creatSortingTable(cellFreezer)
         break;
       case areaId = 'dryingBox':
         creatSortingTable(dryingBox)
