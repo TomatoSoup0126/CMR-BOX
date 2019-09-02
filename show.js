@@ -26,7 +26,7 @@ const freezer2 = [] //-20冰箱
 const freezer3 = [] //-80冰箱
 const dryingBox = [] //乾燥箱
 const liquidNitrogen = [] //液態氮桶
-const medicalCupboard = [] //藥品櫃
+const bench = [] //實驗桌
 const hood = [] //化學抽風櫃
 const cellFreezer = [] //細胞房冰箱
 
@@ -37,7 +37,7 @@ getDocToArray('-20°C冰箱', freezer2)
 getDocToArray('-80°C冰箱', freezer3)
 getDocToArray('藥品乾燥箱', dryingBox)
 getDocToArray('液態氮桶', liquidNitrogen)
-getDocToArray('藥品櫃', medicalCupboard)
+getDocToArray('藥品櫃', bench)
 getDocToArray('化學抽風櫃', hood)
 getDocToArray('細胞房冰箱', cellFreezer)
 
@@ -52,7 +52,7 @@ $(function () {
 
 //監聽搜尋按鈕
 searchButton.addEventListener('click', (event) => {
-  let totalItem = freezer1.concat(freezer2, freezer3, cellFreezer, dryingBox, liquidNitrogen, medicalCupboard) //合併所有項目供搜索
+  let totalItem = freezer1.concat(freezer2, freezer3, cellFreezer, dryingBox, liquidNitrogen, bench) //合併所有項目供搜索
 
   clearTableContent('search') //清空原有欄位轉為搜尋用欄位
   let results = []
@@ -90,8 +90,8 @@ listPanel.addEventListener('click', (event) => {
       case areaId = 'liquidNitrogen':
         creatSortingTable(liquidNitrogen)
         break;
-      case areaId = 'medicalCupboard':
-        creatSortingTable(medicalCupboard)
+      case areaId = 'bench':
+        creatSortingTable(bench)
         break;
       case areaId = 'hood':
         creatSortingTable(hood)
